@@ -28,10 +28,10 @@ export function getFixtureNorm(fixtureType) {
 }
 
 /**
- * Get normalvannmengde (Nvm) for a fixture type and water type
+ * Get normalvannmengde (q1) for a fixture type and water type
  * @param {string} fixtureType - Fixture type identifier
  * @param {'KV'|'VV'|'SPILL'} waterType - Water type
- * @returns {number} Normalvannmengde in l/s, or 0 if not found
+ * @returns {number} q1 in l/s, or 0 if not found
  */
 export function getFixtureNvm(fixtureType, waterType) {
   const fixture = getFixtureNorm(fixtureType);
@@ -39,9 +39,9 @@ export function getFixtureNvm(fixtureType, waterType) {
   
   switch(waterType) {
     case 'KV':
-      return fixture.nvm_kv_lps || 0;
+      return fixture.q1_kv_lps || 0;
     case 'VV':
-      return fixture.nvm_vv_lps || 0;
+      return fixture.q1_vv_lps || 0;
     case 'SPILL':
       return fixture.nvm_spill_lps || 0;
     default:
