@@ -13,6 +13,7 @@ function Dashboard() {
   const [userData, setUserData] = useState(null);
   const [memberSearchQuery, setMemberSearchQuery] = useState('');
   const [showStatusMenu, setShowStatusMenu] = useState(false);
+  const [sanitarySubmenuOpen, setSanitarySubmenuOpen] = useState(false);
 
   // Load current logged in user
   useEffect(() => {
@@ -177,7 +178,16 @@ function Dashboard() {
 
   const navItems = [
     { icon: BarChart3, label: 'Dashboard', active: true, path: '/dashboard' },
-    { icon: Droplets, label: 'Sanitær', active: false, path: '/sanitary' },
+    { 
+      icon: Droplets, 
+      label: 'Sanitær', 
+      active: false, 
+      hasSubmenu: true,
+      submenuItems: [
+        { label: 'Dimensjoner Sanitærledning', path: '/sanitary/water' },
+        { label: 'Dimensjoner overvannsledning', path: '/sanitary/overvann' }
+      ]
+    },
     { icon: Thermometer, label: 'Varme/Kjøling', active: false, path: '#' },
     { icon: Wind, label: 'Ventilasjon', active: false, path: '#' },
     { icon: CheckSquare, label: 'Oppgaver', active: false, path: '#' },
@@ -329,6 +339,55 @@ function Dashboard() {
           <nav className="space-y-2">
             {navItems.map((item, index) => {
               const Icon = item.icon;
+              
+              // Handle items with submenu
+              if (item.hasSubmenu) {
+                return (
+                  <div key={index}>
+                    <button
+                      onClick={() => setSanitarySubmenuOpen(!sanitarySubmenuOpen)}
+                      className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'justify-between'} px-4 py-3 rounded-lg transition-all duration-200 ${
+                        sanitarySubmenuOpen
+                          ? 'bg-white/20 text-white shadow-lg'
+                          : 'text-teal-200 hover:bg-white/10 hover:text-white'
+                      } group relative`}
+                      title={sidebarCollapsed ? item.label : ''}
+                    >
+                      <div className={`flex items-center ${sidebarCollapsed ? '' : 'gap-4'}`}>
+                        <Icon className="w-6 h-6" />
+                        {!sidebarCollapsed && <span className="font-medium">{item.label}</span>}
+                      </div>
+                      {!sidebarCollapsed && (
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${sanitarySubmenuOpen ? 'rotate-180' : ''}`} />
+                      )}
+                      
+                      {/* Tooltip for collapsed state */}
+                      {sidebarCollapsed && (
+                        <span className="absolute left-full ml-2 px-3 py-2 bg-teal-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                          {item.label}
+                        </span>
+                      )}
+                    </button>
+                    
+                    {/* Submenu items */}
+                    {sanitarySubmenuOpen && !sidebarCollapsed && (
+                      <div className="mt-1 space-y-1 pl-4">
+                        {item.submenuItems.map((subItem, subIndex) => (
+                          <Link
+                            key={subIndex}
+                            to={subItem.path}
+                            className="block px-4 py-2.5 text-teal-200 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 text-sm"
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              
+              // Regular navigation items
               return (
                 <Link
                   key={index}

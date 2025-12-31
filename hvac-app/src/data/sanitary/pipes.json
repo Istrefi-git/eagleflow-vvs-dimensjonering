@@ -5,52 +5,79 @@
         "pipeType": "pex_sanipex",
         "label": "PEX Sanipex",
         "dimensions": [
-          { "label": "Ø16x2.0", "innerDiameter_mm": 12.0 },
-          { "label": "Ø20x2.0", "innerDiameter_mm": 16.0 },
-          { "label": "Ø25x2.3", "innerDiameter_mm": 20.4 },
-          { "label": "Ø32x2.9", "innerDiameter_mm": 26.2 },
-          { "label": "Ø40x3.7", "innerDiameter_mm": 32.6 },
-          { "label": "Ø50x4.6", "innerDiameter_mm": 40.8 },
-          { "label": "Ø63x5.8", "innerDiameter_mm": 51.4 }
+          { "label": "10x1.0", "nominalDiameter_mm": 10, "innerDiameter_mm": 8.0 },
+          { "label": "12x1.0", "nominalDiameter_mm": 12, "innerDiameter_mm": 10.0 },
+          { "label": "15x1.2", "nominalDiameter_mm": 15, "innerDiameter_mm": 12.6 },
+          { "label": "18x1.2", "nominalDiameter_mm": 18, "innerDiameter_mm": 15.6 },
+          { "label": "22x1.5", "nominalDiameter_mm": 22, "innerDiameter_mm": 19.0 },
+          { "label": "28x1.5", "nominalDiameter_mm": 28, "innerDiameter_mm": 25.0 },
+          { "label": "35x2.0", "nominalDiameter_mm": 35, "innerDiameter_mm": 31.0 }
         ]
       },
       {
         "pipeType": "pex_uponor",
         "label": "PEX Uponor",
         "dimensions": [
-          { "label": "Ø16x2.2", "innerDiameter_mm": 11.6 },
-          { "label": "Ø20x2.8", "innerDiameter_mm": 14.4 },
-          { "label": "Ø25x3.5", "innerDiameter_mm": 18.0 },
-          { "label": "Ø32x4.4", "innerDiameter_mm": 23.2 },
-          { "label": "Ø40x5.5", "innerDiameter_mm": 29.0 },
-          { "label": "Ø50x6.9", "innerDiameter_mm": 36.2 },
-          { "label": "Ø63x8.6", "innerDiameter_mm": 45.8 }
+          { "label": "Ø16x2.2", "nominalDiameter_mm": 16, "innerDiameter_mm": 11.6 },
+          { "label": "Ø20x2.8", "nominalDiameter_mm": 20, "innerDiameter_mm": 14.4 },
+          { "label": "Ø25x3.5", "nominalDiameter_mm": 25, "innerDiameter_mm": 18.0 },
+          { "label": "Ø32x4.4", "nominalDiameter_mm": 32, "innerDiameter_mm": 23.2 },
+          { "label": "Ø40x5.5", "nominalDiameter_mm": 40, "innerDiameter_mm": 29.0 },
+          { "label": "Ø50x6.9", "nominalDiameter_mm": 50, "innerDiameter_mm": 36.2 },
+          { "label": "Ø63x8.6", "nominalDiameter_mm": 63, "innerDiameter_mm": 45.8 }
         ]
       },
       {
         "pipeType": "copper",
         "label": "Kobberrør",
         "dimensions": [
-          { "label": "DN10 (12x1)", "innerDiameter_mm": 10.0 },
-          { "label": "DN15 (15x1)", "innerDiameter_mm": 13.0 },
-          { "label": "DN20 (22x1)", "innerDiameter_mm": 20.0 },
-          { "label": "DN25 (28x1.5)", "innerDiameter_mm": 25.0 },
-          { "label": "DN32 (35x1.5)", "innerDiameter_mm": 32.0 },
-          { "label": "DN40 (42x1.5)", "innerDiameter_mm": 39.0 },
-          { "label": "DN50 (54x2)", "innerDiameter_mm": 50.0 }
+          { "label": "12x1", "nominalDiameter_mm": 12, "innerDiameter_mm": 10.0 },
+          { "label": "15x1", "nominalDiameter_mm": 15, "innerDiameter_mm": 13.0 },
+          { "label": "18x1", "nominalDiameter_mm": 18, "innerDiameter_mm": 16.0 },
+          { "label": "22x1", "nominalDiameter_mm": 22, "innerDiameter_mm": 20.0 },
+          { "label": "28x1.5", "nominalDiameter_mm": 28, "innerDiameter_mm": 25.0 },
+          { "label": "35x1.5", "nominalDiameter_mm": 35, "innerDiameter_mm": 32.0 },
+          { "label": "42x1.5", "nominalDiameter_mm": 42, "innerDiameter_mm": 39.0 },
+          { "label": "54x2", "nominalDiameter_mm": 54, "innerDiameter_mm": 50.0 }
+        ]
+      },
+      {
+        "pipeType": "pvc_pe50",
+        "label": "PVC PE-50 (Trykkl. PN10)",
+        "dimensions": [
+          { "label": "16", "nominalDiameter_mm": 16, "innerDiameter_mm": 12.0, "outerDiameter_mm": 13, "utvendingX_mm": 6.4 },
+          { "label": "20", "nominalDiameter_mm": 20, "innerDiameter_mm": 16.0, "outerDiameter_mm": 18, "utvendingX_mm": 8.0 },
+          { "label": "25", "nominalDiameter_mm": 25, "innerDiameter_mm": 20.0, "outerDiameter_mm": 22, "utvendingX_mm": 10.0 },
+          { "label": "32", "nominalDiameter_mm": 32, "innerDiameter_mm": 25.0, "outerDiameter_mm": 28, "utvendingX_mm": 13.0 },
+          { "label": "40", "nominalDiameter_mm": 40, "innerDiameter_mm": 31.0, "outerDiameter_mm": 36, "utvendingX_mm": 16.0 },
+          { "label": "50", "nominalDiameter_mm": 50, "innerDiameter_mm": 40.0, "outerDiameter_mm": 45, "utvendingX_mm": 20.0 },
+          { "label": "63", "nominalDiameter_mm": 63, "innerDiameter_mm": 50.0, "outerDiameter_mm": 56, "utvendingX_mm": 25.0 }
         ]
       },
       {
         "pipeType": "alupex",
         "label": "Alupex",
         "dimensions": [
-          { "label": "Ø16x2.0", "innerDiameter_mm": 12.0 },
-          { "label": "Ø20x2.0", "innerDiameter_mm": 16.0 },
-          { "label": "Ø26x3.0", "innerDiameter_mm": 20.0 },
-          { "label": "Ø32x3.0", "innerDiameter_mm": 26.0 },
-          { "label": "Ø40x4.0", "innerDiameter_mm": 32.0 },
-          { "label": "Ø50x4.5", "innerDiameter_mm": 41.0 },
-          { "label": "Ø63x6.0", "innerDiameter_mm": 51.0 }
+          { "label": "Ø16x2.0", "nominalDiameter_mm": 16, "innerDiameter_mm": 12.0 },
+          { "label": "Ø20x2.0", "nominalDiameter_mm": 20, "innerDiameter_mm": 16.0 },
+          { "label": "Ø26x3.0", "nominalDiameter_mm": 26, "innerDiameter_mm": 20.0 },
+          { "label": "Ø32x3.0", "nominalDiameter_mm": 32, "innerDiameter_mm": 26.0 },
+          { "label": "Ø40x4.0", "nominalDiameter_mm": 40, "innerDiameter_mm": 32.0 },
+          { "label": "Ø50x4.5", "nominalDiameter_mm": 50, "innerDiameter_mm": 41.0 },
+          { "label": "Ø63x6.0", "nominalDiameter_mm": 63, "innerDiameter_mm": 51.0 }
+        ]
+      },
+      {
+        "pipeType": "pel",
+        "label": "PEL (Plastledning)",
+        "dimensions": [
+          { "label": "10x1.0", "nominalDiameter_mm": 10, "innerDiameter_mm": 8.0 },
+          { "label": "12x1.0", "nominalDiameter_mm": 12, "innerDiameter_mm": 10.0 },
+          { "label": "15x1.2", "nominalDiameter_mm": 15, "innerDiameter_mm": 12.6 },
+          { "label": "18x1.2", "nominalDiameter_mm": 18, "innerDiameter_mm": 15.6 },
+          { "label": "22x1.5", "nominalDiameter_mm": 22, "innerDiameter_mm": 19.0 },
+          { "label": "28x1.5", "nominalDiameter_mm": 28, "innerDiameter_mm": 25.0 },
+          { "label": "35x2.0", "nominalDiameter_mm": 35, "innerDiameter_mm": 31.0 }
         ]
       }
     ],
@@ -59,83 +86,109 @@
         "pipeType": "pex_sanipex",
         "label": "PEX Sanipex",
         "dimensions": [
-          { "label": "Ø16x2.0", "innerDiameter_mm": 12.0 },
-          { "label": "Ø20x2.0", "innerDiameter_mm": 16.0 },
-          { "label": "Ø25x2.3", "innerDiameter_mm": 20.4 },
-          { "label": "Ø32x2.9", "innerDiameter_mm": 26.2 },
-          { "label": "Ø40x3.7", "innerDiameter_mm": 32.6 },
-          { "label": "Ø50x4.6", "innerDiameter_mm": 40.8 },
-          { "label": "Ø63x5.8", "innerDiameter_mm": 51.4 }
+          { "label": "10x1.0", "nominalDiameter_mm": 10, "innerDiameter_mm": 8.0 },
+          { "label": "12x1.0", "nominalDiameter_mm": 12, "innerDiameter_mm": 10.0 },
+          { "label": "15x1.2", "nominalDiameter_mm": 15, "innerDiameter_mm": 12.6 },
+          { "label": "18x1.2", "nominalDiameter_mm": 18, "innerDiameter_mm": 15.6 },
+          { "label": "22x1.5", "nominalDiameter_mm": 22, "innerDiameter_mm": 19.0 },
+          { "label": "28x1.5", "nominalDiameter_mm": 28, "innerDiameter_mm": 25.0 },
+          { "label": "35x2.0", "nominalDiameter_mm": 35, "innerDiameter_mm": 31.0 }
         ]
       },
       {
         "pipeType": "pex_uponor",
         "label": "PEX Uponor",
         "dimensions": [
-          { "label": "Ø16x2.2", "innerDiameter_mm": 11.6 },
-          { "label": "Ø20x2.8", "innerDiameter_mm": 14.4 },
-          { "label": "Ø25x3.5", "innerDiameter_mm": 18.0 },
-          { "label": "Ø32x4.4", "innerDiameter_mm": 23.2 },
-          { "label": "Ø40x5.5", "innerDiameter_mm": 29.0 },
-          { "label": "Ø50x6.9", "innerDiameter_mm": 36.2 },
-          { "label": "Ø63x8.6", "innerDiameter_mm": 45.8 }
+          { "label": "Ø16x2.2", "nominalDiameter_mm": 16, "innerDiameter_mm": 11.6 },
+          { "label": "Ø20x2.8", "nominalDiameter_mm": 20, "innerDiameter_mm": 14.4 },
+          { "label": "Ø25x3.5", "nominalDiameter_mm": 25, "innerDiameter_mm": 18.0 },
+          { "label": "Ø32x4.4", "nominalDiameter_mm": 32, "innerDiameter_mm": 23.2 },
+          { "label": "Ø40x5.5", "nominalDiameter_mm": 40, "innerDiameter_mm": 29.0 },
+          { "label": "Ø50x6.9", "nominalDiameter_mm": 50, "innerDiameter_mm": 36.2 },
+          { "label": "Ø63x8.6", "nominalDiameter_mm": 63, "innerDiameter_mm": 45.8 }
         ]
       },
       {
         "pipeType": "copper",
         "label": "Kobberrør",
         "dimensions": [
-          { "label": "DN10 (12x1)", "innerDiameter_mm": 10.0 },
-          { "label": "DN15 (15x1)", "innerDiameter_mm": 13.0 },
-          { "label": "DN20 (22x1)", "innerDiameter_mm": 20.0 },
-          { "label": "DN25 (28x1.5)", "innerDiameter_mm": 25.0 },
-          { "label": "DN32 (35x1.5)", "innerDiameter_mm": 32.0 },
-          { "label": "DN40 (42x1.5)", "innerDiameter_mm": 39.0 },
-          { "label": "DN50 (54x2)", "innerDiameter_mm": 50.0 }
+          { "label": "12x1", "nominalDiameter_mm": 12, "innerDiameter_mm": 10.0 },
+          { "label": "15x1", "nominalDiameter_mm": 15, "innerDiameter_mm": 13.0 },
+          { "label": "18x1", "nominalDiameter_mm": 18, "innerDiameter_mm": 16.0 },
+          { "label": "22x1", "nominalDiameter_mm": 22, "innerDiameter_mm": 20.0 },
+          { "label": "28x1.5", "nominalDiameter_mm": 28, "innerDiameter_mm": 25.0 },
+          { "label": "35x1.5", "nominalDiameter_mm": 35, "innerDiameter_mm": 32.0 },
+          { "label": "42x1.5", "nominalDiameter_mm": 42, "innerDiameter_mm": 39.0 },
+          { "label": "54x2", "nominalDiameter_mm": 54, "innerDiameter_mm": 50.0 }
+        ]
+      },
+      {
+        "pipeType": "pvc_pe50",
+        "label": "PVC PE-50 (Trykkl. PN10)",
+        "dimensions": [
+          { "label": "16", "nominalDiameter_mm": 16, "innerDiameter_mm": 12.0, "outerDiameter_mm": 13, "utvendingX_mm": 6.4 },
+          { "label": "20", "nominalDiameter_mm": 20, "innerDiameter_mm": 16.0, "outerDiameter_mm": 18, "utvendingX_mm": 8.0 },
+          { "label": "25", "nominalDiameter_mm": 25, "innerDiameter_mm": 20.0, "outerDiameter_mm": 22, "utvendingX_mm": 10.0 },
+          { "label": "32", "nominalDiameter_mm": 32, "innerDiameter_mm": 25.0, "outerDiameter_mm": 28, "utvendingX_mm": 13.0 },
+          { "label": "40", "nominalDiameter_mm": 40, "innerDiameter_mm": 31.0, "outerDiameter_mm": 36, "utvendingX_mm": 16.0 },
+          { "label": "50", "nominalDiameter_mm": 50, "innerDiameter_mm": 40.0, "outerDiameter_mm": 45, "utvendingX_mm": 20.0 },
+          { "label": "63", "nominalDiameter_mm": 63, "innerDiameter_mm": 50.0, "outerDiameter_mm": 56, "utvendingX_mm": 25.0 }
         ]
       },
       {
         "pipeType": "alupex",
         "label": "Alupex",
         "dimensions": [
-          { "label": "Ø16x2.0", "innerDiameter_mm": 12.0 },
-          { "label": "Ø20x2.0", "innerDiameter_mm": 16.0 },
-          { "label": "Ø26x3.0", "innerDiameter_mm": 20.0 },
-          { "label": "Ø32x3.0", "innerDiameter_mm": 26.0 },
-          { "label": "Ø40x4.0", "innerDiameter_mm": 32.0 },
-          { "label": "Ø50x4.5", "innerDiameter_mm": 41.0 },
-          { "label": "Ø63x6.0", "innerDiameter_mm": 51.0 }
+          { "label": "Ø16x2.0", "nominalDiameter_mm": 16, "innerDiameter_mm": 12.0 },
+          { "label": "Ø20x2.0", "nominalDiameter_mm": 20, "innerDiameter_mm": 16.0 },
+          { "label": "Ø26x3.0", "nominalDiameter_mm": 26, "innerDiameter_mm": 20.0 },
+          { "label": "Ø32x3.0", "nominalDiameter_mm": 32, "innerDiameter_mm": 26.0 },
+          { "label": "Ø40x4.0", "nominalDiameter_mm": 40, "innerDiameter_mm": 32.0 },
+          { "label": "Ø50x4.5", "nominalDiameter_mm": 50, "innerDiameter_mm": 41.0 },
+          { "label": "Ø63x6.0", "nominalDiameter_mm": 63, "innerDiameter_mm": 51.0 }
+        ]
+      },
+      {
+        "pipeType": "pel",
+        "label": "PEL (Plastledning)",
+        "dimensions": [
+          { "label": "10x1.0", "nominalDiameter_mm": 10, "innerDiameter_mm": 8.0 },
+          { "label": "12x1.0", "nominalDiameter_mm": 12, "innerDiameter_mm": 10.0 },
+          { "label": "15x1.2", "nominalDiameter_mm": 15, "innerDiameter_mm": 12.6 },
+          { "label": "18x1.2", "nominalDiameter_mm": 18, "innerDiameter_mm": 15.6 },
+          { "label": "22x1.5", "nominalDiameter_mm": 22, "innerDiameter_mm": 19.0 },
+          { "label": "28x1.5", "nominalDiameter_mm": 28, "innerDiameter_mm": 25.0 },
+          { "label": "35x2.0", "nominalDiameter_mm": 35, "innerDiameter_mm": 31.0 }
         ]
       }
     ],
     "AV": [
       {
         "pipeType": "plastic",
-        "label": "Plastrør",
+        "label": "Plastrør (PVC/PP)",
         "dimensions": [
-          { "label": "Ø32", "innerDiameter_mm": 32.0 },
-          { "label": "Ø40", "innerDiameter_mm": 40.0 },
-          { "label": "Ø50", "innerDiameter_mm": 50.0 },
-          { "label": "Ø75", "innerDiameter_mm": 75.0 },
-          { "label": "Ø110", "innerDiameter_mm": 110.0 },
-          { "label": "Ø125", "innerDiameter_mm": 125.0 },
-          { "label": "Ø160", "innerDiameter_mm": 160.0 }
+          { "label": "Ø32", "nominalDiameter_mm": 32, "innerDiameter_mm": 32.0 },
+          { "label": "Ø40", "nominalDiameter_mm": 40, "innerDiameter_mm": 40.0 },
+          { "label": "Ø50", "nominalDiameter_mm": 50, "innerDiameter_mm": 50.0 },
+          { "label": "Ø75", "nominalDiameter_mm": 75, "innerDiameter_mm": 75.0 },
+          { "label": "Ø110", "nominalDiameter_mm": 110, "innerDiameter_mm": 110.0 },
+          { "label": "Ø125", "nominalDiameter_mm": 125, "innerDiameter_mm": 125.0 },
+          { "label": "Ø160", "nominalDiameter_mm": 160, "innerDiameter_mm": 160.0 }
         ]
       },
       {
         "pipeType": "ma_pipe",
         "label": "MA-rør",
         "dimensions": [
-          { "label": "Ø32", "innerDiameter_mm": 32.0 },
-          { "label": "Ø40", "innerDiameter_mm": 40.0 },
-          { "label": "Ø50", "innerDiameter_mm": 50.0 },
-          { "label": "Ø75", "innerDiameter_mm": 75.0 },
-          { "label": "Ø110", "innerDiameter_mm": 110.0 },
-          { "label": "Ø125", "innerDiameter_mm": 125.0 },
-          { "label": "Ø160", "innerDiameter_mm": 160.0 }
+          { "label": "Ø32", "nominalDiameter_mm": 32, "innerDiameter_mm": 32.0 },
+          { "label": "Ø40", "nominalDiameter_mm": 40, "innerDiameter_mm": 40.0 },
+          { "label": "Ø50", "nominalDiameter_mm": 50, "innerDiameter_mm": 50.0 },
+          { "label": "Ø75", "nominalDiameter_mm": 75, "innerDiameter_mm": 75.0 },
+          { "label": "Ø110", "nominalDiameter_mm": 110, "innerDiameter_mm": 110.0 },
+          { "label": "Ø125", "nominalDiameter_mm": 125, "innerDiameter_mm": 125.0 },
+          { "label": "Ø160", "nominalDiameter_mm": 160, "innerDiameter_mm": 160.0 }
         ]
       }
     ]
   }
 }
-

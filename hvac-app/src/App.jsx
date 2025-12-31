@@ -11,6 +11,8 @@ import Dashboard from './components/Dashboard';
 import CreateProject from './components/CreateProject';
 import ProfileSettings from './components/ProfileSettings';
 import SanitaryDesign from './components/SanitaryDesign';
+import SanitaryWater from './components/SanitaryWater';
+import StormwaterDesign from './components/StormwaterDesign';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/create-project" element={<CreateProject />} />
           <Route path="/profile-settings" element={<ProfileSettings />} />
           <Route path="/sanitary" element={<SanitaryDesign />} />
+          <Route path="/sanitary/water" element={<SanitaryWater />} />
+          <Route path="/sanitary/overvann" element={<StormwaterDesign />} />
         </Routes>
       </div>
     </Router>

@@ -1,61 +1,214 @@
 {
   "fixtures": [
     {
-      "fixtureType": "wc",
-      "label": "WC",
-      "nominalFlow_lps": 0.1,
-      "loadUnits": 2.0,
-      "waterTypes": ["KV"]
+      "fixtureType": "drikkefontene",
+      "label": "Drikkefontene",
+      "nvm_kv_lps": 0.05,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 0.1
+    },
+    {
+      "fixtureType": "bidet",
+      "label": "Bidét",
+      "nvm_kv_lps": 0.1,
+      "nvm_vv_lps": 0.1,
+      "nvm_spill_lps": 0.3
     },
     {
       "fixtureType": "servant",
       "label": "Servant",
-      "nominalFlow_lps": 0.1,
-      "loadUnits": 0.5,
-      "waterTypes": ["KV", "VV", "BOTH"]
+      "nvm_kv_lps": 0.1,
+      "nvm_vv_lps": 0.1,
+      "nvm_spill_lps": 1.2
+    },
+    {
+      "fixtureType": "servant_1bunnventil",
+      "label": "Servant med 1\" bunnventil",
+      "nvm_kv_lps": 0.3,
+      "nvm_vv_lps": 0.3,
+      "nvm_spill_lps": 0.3
+    },
+    {
+      "fixtureType": "urinal_stand",
+      "label": "Urinal (pr. stand) og veggurinal",
+      "nvm_kv_lps": 0.1,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 0.3
     },
     {
       "fixtureType": "dusj",
       "label": "Dusj",
-      "nominalFlow_lps": 0.2,
-      "loadUnits": 1.0,
-      "waterTypes": ["KV", "VV", "BOTH"]
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0.2,
+      "nvm_spill_lps": 1.2
+    },
+    {
+      "fixtureType": "servant_1_14_bunnventil",
+      "label": "Servant med 1 1/4\" bunnventil",
+      "nvm_kv_lps": 0.4,
+      "nvm_vv_lps": 0.4,
+      "nvm_spill_lps": 0.4
+    },
+    {
+      "fixtureType": "vaskerenne",
+      "label": "Vaskerenne pr. m",
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0.2,
+      "nvm_spill_lps": 0.4
+    },
+    {
+      "fixtureType": "oppvask_enkel_dobbel_planvask",
+      "label": "Oppvask (enkel eller dobbel) og planvask",
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0.2,
+      "nvm_spill_lps": 0.6
+    },
+    {
+      "fixtureType": "vaskemaskin_leilighet",
+      "label": "Vaskemaskin i leilighet",
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 0.6
+    },
+    {
+      "fixtureType": "oppvaskmaskin_leilighet",
+      "label": "Oppvaskmaskin i leilighet",
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 0.6
+    },
+    {
+      "fixtureType": "vaskekar",
+      "label": "Vaskekar",
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0.2,
+      "nvm_spill_lps": 0.6
     },
     {
       "fixtureType": "badekar",
       "label": "Badekar",
-      "nominalFlow_lps": 0.3,
-      "loadUnits": 1.5,
-      "waterTypes": ["KV", "VV", "BOTH"]
+      "nvm_kv_lps": 0.3,
+      "nvm_vv_lps": 0.3,
+      "nvm_spill_lps": 0.9
     },
     {
-      "fixtureType": "kjøkkenvask",
-      "label": "Kjøkkenvask",
-      "nominalFlow_lps": 0.15,
-      "loadUnits": 1.0,
-      "waterTypes": ["KV", "VV", "BOTH"]
+      "fixtureType": "utslagsvask_laboratorievask_grytevask",
+      "label": "Utslagsvask, laboratorievask, grytevask",
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0.2,
+      "nvm_spill_lps": 0.9
+    },
+    {
+      "fixtureType": "kombinert_opp_utslagsvask",
+      "label": "Kombinert opp- og utslagsvask",
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0.2,
+      "nvm_spill_lps": 0.9
+    },
+    {
+      "fixtureType": "goivsluk_75mm_støpejem",
+      "label": "Goivsluk, 75 mm støpejem",
+      "nvm_kv_lps": 0,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 1.2
+    },
+    {
+      "fixtureType": "vaskemaskin_fellesvaskeri_boliger",
+      "label": "Vaskemaskin i fellesvaskeri for boliger",
+      "nvm_kv_lps": 0.4,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 1.2
+    },
+    {
+      "fixtureType": "oppvaskmaskin_erverv_liten",
+      "label": "Oppvaskmaskin i erverv, liten størrelse",
+      "nvm_kv_lps": 0.4,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 1.2
+    },
+    {
+      "fixtureType": "golvsluk_75mm_piast",
+      "label": "Golvsluk, 75 mm piast",
+      "nvm_kv_lps": 0,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 1.5
+    },
+    {
+      "fixtureType": "utslagsskål_bekkenspyler_wc",
+      "label": "Utslagsskål, bekkenspyler WC",
+      "nvm_kv_lps": 1.3,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 5.4
+    },
+    {
+      "fixtureType": "wc",
+      "label": "WC (toalett)",
+      "nvm_kv_lps": 0.1,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 5.4
+    },
+    {
+      "fixtureType": "goivsluk_110mm",
+      "label": "Goivsluk, 110 mm",
+      "nvm_kv_lps": 0,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 2.0
+    },
+    {
+      "fixtureType": "kaffemaskin",
+      "label": "Kaffemaskin",
+      "nvm_kv_lps": 0.007,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 0
+    },
+    {
+      "fixtureType": "oppvaskbatteri",
+      "label": "Oppvaskbatteri",
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0.2,
+      "nvm_spill_lps": 0.6
     },
     {
       "fixtureType": "oppvaskmaskin",
       "label": "Oppvaskmaskin",
-      "nominalFlow_lps": 0.15,
-      "loadUnits": 1.0,
-      "waterTypes": ["KV"]
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 0.6
     },
     {
-      "fixtureType": "vaskemaskin",
-      "label": "Vaskemaskin",
-      "nominalFlow_lps": 0.2,
-      "loadUnits": 1.5,
-      "waterTypes": ["KV", "VV", "BOTH"]
+      "fixtureType": "sluk_75mm",
+      "label": "Sluk 75mm",
+      "nvm_kv_lps": 0,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 1.5
+    },
+    {
+      "fixtureType": "toalett",
+      "label": "Toalett",
+      "nvm_kv_lps": 0.3,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 5.4
+    },
+    {
+      "fixtureType": "hagekran",
+      "label": "Hagekran",
+      "nvm_kv_lps": 0.4,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 0
     },
     {
       "fixtureType": "utslagsvask",
       "label": "Utslagsvask",
-      "nominalFlow_lps": 0.2,
-      "loadUnits": 2.0,
-      "waterTypes": ["KV"]
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0.2,
+      "nvm_spill_lps": 0.9
+    },
+    {
+      "fixtureType": "vaskemaskin",
+      "label": "Vaskemaskin",
+      "nvm_kv_lps": 0.2,
+      "nvm_vv_lps": 0,
+      "nvm_spill_lps": 0.6
     }
   ]
 }
-
