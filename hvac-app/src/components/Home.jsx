@@ -189,44 +189,44 @@ function Home() {
           </div>
 
           {/* Why Section */}
-          <div className="mt-20 scroll-animate opacity-0 scale-95 transition-all duration-700 bg-gradient-to-r from-purple-500/20 via-cyan-500/20 to-purple-500/20 backdrop-blur-lg rounded-2xl p-12 border border-purple-500/40 shadow-2xl shadow-purple-500/20 hover:shadow-purple-500/40">
-            <h2 className="text-4xl font-bold text-white mb-8 text-center bg-gradient-to-r from-purple-200 via-cyan-200 to-purple-200 bg-clip-text text-transparent">
+          <div className="mt-20 scroll-animate opacity-0 scale-95 transition-all duration-700 bg-gradient-to-r from-purple-500/20 via-cyan-500/20 to-purple-500/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 md:p-12 border border-purple-500/40 shadow-2xl shadow-purple-500/20 hover:shadow-purple-500/40">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-8 text-center bg-gradient-to-r from-purple-200 via-cyan-200 to-purple-200 bg-clip-text text-transparent break-words">
               Hvorfor velge vårt dimensjoneringsverktøy?
             </h2>
             
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
               <div className="space-y-4">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white font-bold">✓</span>
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Spar tid og penger</h4>
-                    <p className="text-gray-300">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Spar tid og penger</h4>
+                    <p className="text-sm sm:text-base text-gray-300">
                       Hva som tidligere tok timer, tar nå minutter. Mer tid til kaffe og viktige prosjektmøter!
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white font-bold">✓</span>
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Færre feil</h4>
-                    <p className="text-gray-300">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Færre feil</h4>
+                    <p className="text-sm sm:text-base text-gray-300">
                       Automatiserte beregninger betyr færre menneskelige feil. Ingen mer pinlige revisjoner!
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white font-bold">✓</span>
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Profesjonelle rapporter</h4>
-                    <p className="text-gray-300">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Profesjonelle rapporter</h4>
+                    <p className="text-sm sm:text-base text-gray-300">
                       Generer flotte dokumenter som får deg til å se ut som en superstjerne.
                     </p>
                   </div>
@@ -234,37 +234,37 @@ function Home() {
               </div>
 
               <div className="space-y-4">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white font-bold">✓</span>
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Alltid oppdatert</h4>
-                    <p className="text-gray-300">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Alltid oppdatert</h4>
+                    <p className="text-sm sm:text-base text-gray-300">
                       Vi følger de nyeste standardene og forskriftene. Du trenger ikke bekymre deg for noe!
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white font-bold">✓</span>
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Brukervennlig</h4>
-                    <p className="text-gray-300">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Brukervennlig</h4>
+                    <p className="text-sm sm:text-base text-gray-300">
                       Så enkelt at selv din sjef kan bruke det. Intuitiv design som bare funker!
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white font-bold">✓</span>
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">Imponér kunder</h4>
-                    <p className="text-gray-300">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Imponér kunder</h4>
+                    <p className="text-sm sm:text-base text-gray-300">
                       Lever profesjonelle resultater som får kundene til å komme tilbake gang på gang.
                     </p>
                   </div>
