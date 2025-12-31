@@ -3,15 +3,18 @@
  * Loads JSON datasets and provides access to them
  */
 
-import normsData from '../../data/sanitary/norms.json';
-import pipesData from '../../data/sanitary/pipes.json';
+import normsDataImport from '../../data/sanitary/norms.json';
+import pipesDataImport from '../../data/sanitary/pipes.json';
+
+const normsData = normsDataImport || { fixtures: [] };
+const pipesData = pipesDataImport || { byMediaType: { KV: [], VV: [], AV: [] } };
 
 /**
  * Get all fixture norms
  * @returns {import('./types').NormFixture[]}
  */
 export function getFixtureNorms() {
-  return normsData.fixtures;
+  return normsData?.fixtures || [];
 }
 
 /**
@@ -20,7 +23,8 @@ export function getFixtureNorms() {
  * @returns {import('./types').NormFixture|null}
  */
 export function getFixtureNorm(fixtureType) {
-  return normsData.fixtures.find(f => f.fixtureType === fixtureType) || null;
+  const fixtures = normsData?.fixtures || [];
+  return fixtures.find(f => f.fixtureType === fixtureType) || null;
 }
 
 /**
@@ -28,7 +32,7 @@ export function getFixtureNorm(fixtureType) {
  * @returns {import('./types').PipeCatalog}
  */
 export function getPipeCatalog() {
-  return pipesData;
+  return pipesData || { byMediaType: { KV: [], VV: [], AV: [] } };
 }
 
 /**
@@ -37,7 +41,7 @@ export function getPipeCatalog() {
  * @returns {import('./types').PipeTypeDefinition[]}
  */
 export function getPipeTypesForMedia(mediaType) {
-  return pipesData.byMediaType[mediaType] || [];
+  return pipesData?.byMediaType?.[mediaType] || [];
 }
 
 /**
@@ -61,4 +65,3 @@ export function getPipeDimensions(mediaType, pipeType) {
   const typeDef = getPipeTypeDefinition(mediaType, pipeType);
   return typeDef ? typeDef.dimensions : [];
 }
-
