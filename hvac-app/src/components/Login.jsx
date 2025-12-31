@@ -14,12 +14,12 @@ function Login() {
     e.preventDefault();
     
     // Check for admin login first
-    if (formData.email === 'Admin' && formData.password === '1234') {
+    if (formData.email === 'Admin@hotmail.com' && formData.password === '1234') {
       const adminUser = {
         id: 0,
         firstName: 'Admin',
         lastName: 'User',
-        email: 'Admin',
+        email: 'Admin@hotmail.com',
         phone: '',
         employer: 'EagleFlow',
         position: 'Administrator',
