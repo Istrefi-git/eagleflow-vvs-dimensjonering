@@ -1,0 +1,118 @@
+import React, { useEffect, useRef } from 'react';
+import { Users, Award, Target, Heart } from 'lucide-react';
+
+function AboutUs() {
+  const observerRef = useRef(null);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll('.scroll-animate');
+    elements.forEach((el) => observerRef.current.observe(el));
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 py-20 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-blob"></div>
+        <div className="absolute top-40 right-10 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+      </div>
+      
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 relative">
+        {/* Header */}
+        <div className="text-center mb-16 scroll-animate opacity-0 translate-y-10 transition-all duration-700">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-purple-200 via-cyan-200 to-purple-200 bg-clip-text text-transparent">
+            Om oss
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 via-cyan-500 to-purple-500 mx-auto rounded-full animate-gradient-x"></div>
+        </div>
+
+        {/* Main Content */}
+        <div className="scroll-animate opacity-0 scale-95 transition-all duration-700 bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-purple-400/30 shadow-2xl shadow-purple-500/20 hover:shadow-purple-500/40 hover:border-purple-400/50 transition-all mb-12">
+          <div className="prose prose-lg prose-invert max-w-none">
+            <p className="text-xl text-gray-200 leading-relaxed mb-6">
+              EagleFlow er utviklet av brødrene <span className="text-cyan-400 font-semibold">Albanin Istrefi</span> og <span className="text-cyan-400 font-semibold">Avdyl Istrefi</span>, begge med over 10 års erfaring fra VVS-bransjen, primært innen rørfaget. Gjennom mange år som rådgivere, prosjektingeniører og utførende har vi jobbet tett på både prosjektering, dimensjonering og gjennomføring av VVS-anlegg i små og store prosjekter.
+            </p>
+
+            <p className="text-xl text-gray-200 leading-relaxed mb-6">
+              Vi har sett på nært hold hvilke utfordringer som oppstår når dimensjonering baseres på manuelle Excel-ark og egenutviklede regneoppsett – løsninger som ofte er tidkrevende, lite standardiserte og sårbare for menneskelige feil. Dette var utgangspunktet for EagleFlow.
+            </p>
+
+            <p className="text-xl text-gray-200 leading-relaxed mb-6">
+              Med en sterk faglig forankring og genuin lidenskap for VVS-faget ønsket vi å utvikle et moderne, pålitelig og brukervennlig verktøy som forenkler dimensjonering av VVS-anlegg, samtidig som kvalitet og sporbarhet ivaretas. Målet vårt er å gi bransjen et smartere alternativ som bidrar til mer effektive arbeidsprosesser, bedre beslutningsgrunnlag og redusert risiko for feil i prosjektering.
+            </p>
+
+            <p className="text-xl text-cyan-300 leading-relaxed font-semibold">
+              EagleFlow er utviklet av fagfolk – for fagfolk, og videreutvikles kontinuerlig basert på erfaring fra praksis, gjeldende regelverk og reelle behov i bransjen.
+            </p>
+          </div>
+        </div>
+
+        {/* Feature Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="scroll-animate opacity-0 translate-y-10 transition-all duration-700 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-xl p-6 border border-purple-400/30 text-center transform hover:scale-110 hover:rotate-3 hover:shadow-xl hover:shadow-cyan-500/30 transition-all">
+            <div className="inline-flex p-4 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full mb-4 transform hover:rotate-12 transition-transform duration-300 shadow-lg shadow-cyan-500/50">
+              <Users className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">10+ års erfaring</h3>
+            <p className="text-gray-300">Fra VVS-bransjen</p>
+          </div>
+
+          <div className="scroll-animate opacity-0 translate-y-10 transition-all duration-700 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-xl p-6 border border-purple-400/30 text-center transform hover:scale-110 hover:rotate-3 hover:shadow-xl hover:shadow-emerald-500/30 transition-all" style={{ transitionDelay: '100ms' }}>
+            <div className="inline-flex p-4 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full mb-4 transform hover:rotate-12 transition-transform duration-300 shadow-lg shadow-emerald-500/50">
+              <Award className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Faglig forankret</h3>
+            <p className="text-gray-300">Av erfarne fagfolk</p>
+          </div>
+
+          <div className="scroll-animate opacity-0 translate-y-10 transition-all duration-700 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-xl p-6 border border-purple-400/30 text-center transform hover:scale-110 hover:rotate-3 hover:shadow-xl hover:shadow-orange-500/30 transition-all" style={{ transitionDelay: '200ms' }}>
+            <div className="inline-flex p-4 bg-gradient-to-br from-orange-500 to-red-500 rounded-full mb-4 transform hover:rotate-12 transition-transform duration-300 shadow-lg shadow-orange-500/50">
+              <Target className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Praktisk erfaring</h3>
+            <p className="text-gray-300">Fra ekte prosjekter</p>
+          </div>
+
+          <div className="scroll-animate opacity-0 translate-y-10 transition-all duration-700 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-xl p-6 border border-purple-400/30 text-center transform hover:scale-110 hover:rotate-3 hover:shadow-xl hover:shadow-pink-500/30 transition-all" style={{ transitionDelay: '300ms' }}>
+            <div className="inline-flex p-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full mb-4 transform hover:rotate-12 transition-transform duration-300 shadow-lg shadow-purple-500/50">
+              <Heart className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Lidenskap for faget</h3>
+            <p className="text-gray-300">Kontinuerlig utvikling</p>
+          </div>
+        </div>
+
+        {/* Quote Section */}
+        <div className="scroll-animate opacity-0 scale-95 transition-all duration-700 bg-gradient-to-r from-purple-500/20 via-cyan-500/20 to-purple-500/20 backdrop-blur-lg rounded-2xl p-8 border border-purple-500/40 text-center shadow-2xl shadow-purple-500/30 hover:shadow-cyan-500/40 transition-all">
+          <blockquote className="text-2xl md:text-3xl font-semibold text-white italic mb-4 bg-gradient-to-r from-purple-200 via-cyan-200 to-purple-200 bg-clip-text text-transparent">
+            "Utviklet av fagfolk – for fagfolk"
+          </blockquote>
+          <p className="text-lg text-gray-300">
+            Med ekte erfaring fra bransjen, for å løse reelle utfordringer
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default AboutUs;
+

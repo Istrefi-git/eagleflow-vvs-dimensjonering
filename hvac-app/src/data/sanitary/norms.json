@@ -1,0 +1,61 @@
+{
+  "fixtures": [
+    {
+      "fixtureType": "wc",
+      "label": "WC",
+      "nominalFlow_lps": 0.1,
+      "loadUnits": 2.0,
+      "waterTypes": ["KV"]
+    },
+    {
+      "fixtureType": "servant",
+      "label": "Servant",
+      "nominalFlow_lps": 0.1,
+      "loadUnits": 0.5,
+      "waterTypes": ["KV", "VV", "BOTH"]
+    },
+    {
+      "fixtureType": "dusj",
+      "label": "Dusj",
+      "nominalFlow_lps": 0.2,
+      "loadUnits": 1.0,
+      "waterTypes": ["KV", "VV", "BOTH"]
+    },
+    {
+      "fixtureType": "badekar",
+      "label": "Badekar",
+      "nominalFlow_lps": 0.3,
+      "loadUnits": 1.5,
+      "waterTypes": ["KV", "VV", "BOTH"]
+    },
+    {
+      "fixtureType": "kjøkkenvask",
+      "label": "Kjøkkenvask",
+      "nominalFlow_lps": 0.15,
+      "loadUnits": 1.0,
+      "waterTypes": ["KV", "VV", "BOTH"]
+    },
+    {
+      "fixtureType": "oppvaskmaskin",
+      "label": "Oppvaskmaskin",
+      "nominalFlow_lps": 0.15,
+      "loadUnits": 1.0,
+      "waterTypes": ["KV"]
+    },
+    {
+      "fixtureType": "vaskemaskin",
+      "label": "Vaskemaskin",
+      "nominalFlow_lps": 0.2,
+      "loadUnits": 1.5,
+      "waterTypes": ["KV", "VV", "BOTH"]
+    },
+    {
+      "fixtureType": "utslagsvask",
+      "label": "Utslagsvask",
+      "nominalFlow_lps": 0.2,
+      "loadUnits": 2.0,
+      "waterTypes": ["KV"]
+    }
+  ]
+}
+
