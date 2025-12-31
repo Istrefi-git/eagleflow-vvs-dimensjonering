@@ -14,7 +14,7 @@ import SanitaryDesign from './components/SanitaryDesign';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/eagleflow-vvs-dimensjonering">
       <div className="min-h-screen">
         <Routes>
           <Route path="/" element={<><Header /><Home /></>} />
