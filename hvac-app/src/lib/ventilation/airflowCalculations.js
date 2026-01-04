@@ -45,11 +45,16 @@ export function calcKravspek(areal_m2, kravspek_m3h_per_m2) {
 
 /**
  * Calculate Valgt Avtrekk (Column M)
- * Formula: M = L
+ * Formula: M = L (or use manually input value if provided)
  * @param {number} valgtTilluft_m3h - L: Valgt tilluft (m³/h)
+ * @param {number} valgtAvtrekk_m3h - M: Manually input valgt avtrekk (if any)
  * @returns {number} Valgt avtrekk (m³/h)
  */
-export function calcValgtAvtrekk(valgtTilluft_m3h) {
+export function calcValgtAvtrekk(valgtTilluft_m3h, valgtAvtrekk_m3h) {
+  // If manually input value exists, use it. Otherwise default to tilluft value
+  if (valgtAvtrekk_m3h !== undefined && valgtAvtrekk_m3h !== null && valgtAvtrekk_m3h !== '') {
+    return parseFloat(valgtAvtrekk_m3h) || 0;
+  }
   return valgtTilluft_m3h || 0;
 }
 
@@ -117,7 +122,7 @@ export function calcRoomRow(row, globals) {
   
   const kravspek = calcKravspek(row.areal_m2, row.kravspek_m3h_per_m2);
   
-  const valgtAvtrekk = calcValgtAvtrekk(row.valgtTilluft_m3h);
+  const valgtAvtrekk = calcValgtAvtrekk(row.valgtTilluft_m3h, row.valgtAvtrekk_m3h);
   
   const vavMin = calcVAVMin(row.vavMaks_m3h, globals.vavMinFactor);
   

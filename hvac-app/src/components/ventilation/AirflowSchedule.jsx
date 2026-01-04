@@ -26,6 +26,8 @@ function AirflowSchedule() {
   const [showGlobalsModal, setShowGlobalsModal] = useState(false);
   const [showMetaModal, setShowMetaModal] = useState(false);
   const [expandedSystems, setExpandedSystems] = useState({});
+  const [systemType, setSystemType] = useState('VAV'); // 'VAV' eller 'CAV'
+  const [tek17Calculated, setTek17Calculated] = useState(0);
   
   // Form state for new/edit row
   const [formData, setFormData] = useState({
@@ -37,10 +39,12 @@ function AirflowSchedule() {
     prosess_m3h: '',
     kravspek_m3h_per_m2: '',
     valgtTilluft_m3h: '',
+    valgtAvtrekk_m3h: '',
     systemnr: '',
     vavMaks_m3h: '',
     cavKonstant_m3h: '',
-    kommentar: ''
+    kommentar: '',
+    systemType: 'VAV'
   });
 
   // Load selected project and data
@@ -92,6 +96,34 @@ function AirflowSchedule() {
   const sums = calcSums(rowsWithCalculations);
   const systemGroups = groupBySystem(rowsWithCalculations);
 
+  // Get unique values from existing rows for dropdowns
+  const getUniqueValues = (field) => {
+    if (!data?.rows) return [];
+    const values = data.rows.map(row => row[field]).filter(v => v && v.trim() !== '');
+    return [...new Set(values)].sort();
+  };
+
+  const uniquePlans = getUniqueValues('plan');
+  const uniqueRomnr = getUniqueValues('romnr');
+  const uniqueRomnavn = getUniqueValues('romnavn');
+  const uniqueSystemnr = getUniqueValues('systemnr');
+
+  // Calculate TEK17 when form values change
+  useEffect(() => {
+    if (data && (formData.areal_m2 || formData.personer || formData.prosess_m3h)) {
+      const areal = parseFloat(formData.areal_m2) || 0;
+      const personer = parseInt(formData.personer) || 0;
+      const prosess = parseFloat(formData.prosess_m3h) || 0;
+      
+      if (prosess > 0) {
+        setTek17Calculated(prosess);
+      } else {
+        const tek17 = (areal * data.globals.A_m3h_per_m2) + (personer * data.globals.B_m3h_per_person);
+        setTek17Calculated(tek17);
+      }
+    }
+  }, [formData.areal_m2, formData.personer, formData.prosess_m3h, data]);
+
   const handleAddRow = (e) => {
     e.preventDefault();
     
@@ -109,10 +141,12 @@ function AirflowSchedule() {
       prosess_m3h: parseFloat(formData.prosess_m3h) || 0,
       kravspek_m3h_per_m2: parseFloat(formData.kravspek_m3h_per_m2) || 0,
       valgtTilluft_m3h: parseFloat(formData.valgtTilluft_m3h) || 0,
+      valgtAvtrekk_m3h: parseFloat(formData.valgtAvtrekk_m3h) || 0,
       systemnr: formData.systemnr,
       vavMaks_m3h: parseFloat(formData.vavMaks_m3h) || 0,
       cavKonstant_m3h: parseFloat(formData.cavKonstant_m3h) || 0,
-      kommentar: formData.kommentar
+      kommentar: formData.kommentar,
+      systemType: formData.systemType
     };
     
     const added = addRow(selectedProject.id, newRow);
@@ -135,10 +169,12 @@ function AirflowSchedule() {
       prosess_m3h: row.prosess_m3h || '',
       kravspek_m3h_per_m2: row.kravspek_m3h_per_m2 || '',
       valgtTilluft_m3h: row.valgtTilluft_m3h || '',
+      valgtAvtrekk_m3h: row.valgtAvtrekk_m3h || '',
       systemnr: row.systemnr || '',
       vavMaks_m3h: row.vavMaks_m3h || '',
       cavKonstant_m3h: row.cavKonstant_m3h || '',
-      kommentar: row.kommentar || ''
+      kommentar: row.kommentar || '',
+      systemType: row.systemType || 'VAV'
     });
     setShowEditModal(true);
   };
@@ -157,10 +193,12 @@ function AirflowSchedule() {
       prosess_m3h: parseFloat(formData.prosess_m3h) || 0,
       kravspek_m3h_per_m2: parseFloat(formData.kravspek_m3h_per_m2) || 0,
       valgtTilluft_m3h: parseFloat(formData.valgtTilluft_m3h) || 0,
+      valgtAvtrekk_m3h: parseFloat(formData.valgtAvtrekk_m3h) || 0,
       systemnr: formData.systemnr,
       vavMaks_m3h: parseFloat(formData.vavMaks_m3h) || 0,
       cavKonstant_m3h: parseFloat(formData.cavKonstant_m3h) || 0,
-      kommentar: formData.kommentar
+      kommentar: formData.kommentar,
+      systemType: formData.systemType
     };
     
     if (updateRow(selectedProject.id, editingRow.id, updates)) {
@@ -223,11 +261,14 @@ function AirflowSchedule() {
       prosess_m3h: '',
       kravspek_m3h_per_m2: '',
       valgtTilluft_m3h: '',
+      valgtAvtrekk_m3h: '',
       systemnr: '',
       vavMaks_m3h: '',
       cavKonstant_m3h: '',
-      kommentar: ''
+      kommentar: '',
+      systemType: 'VAV'
     });
+    setTek17Calculated(0);
   };
 
   const toggleSystem = (systemnr) => {
@@ -522,25 +563,66 @@ function AirflowSchedule() {
             </div>
 
             <form onSubmit={showEditModal ? handleUpdateRow : handleAddRow} className="space-y-4">
+              {/* System Type Selection */}
+              <div className="mb-4 p-4 bg-gray-50 rounded-lg">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Anleggstype</label>
+                <div className="flex gap-4">
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="systemType"
+                      value="VAV"
+                      checked={formData.systemType === 'VAV'}
+                      onChange={(e) => setFormData({...formData, systemType: e.target.value})}
+                      className="mr-2"
+                    />
+                    <span className="font-medium">VAV (Variabelt luftmengde)</span>
+                  </label>
+                  <label className="flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="systemType"
+                      value="CAV"
+                      checked={formData.systemType === 'CAV'}
+                      onChange={(e) => setFormData({...formData, systemType: e.target.value})}
+                      className="mr-2"
+                    />
+                    <span className="font-medium">CAV (Konstant luftmengde)</span>
+                  </label>
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Plan</label>
                   <input
                     type="text"
+                    list="planList"
                     value={formData.plan}
                     onChange={(e) => setFormData({...formData, plan: e.target.value})}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   />
+                  <datalist id="planList">
+                    {uniquePlans.map((plan, idx) => (
+                      <option key={idx} value={plan} />
+                    ))}
+                  </datalist>
                 </div>
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Rom nr</label>
                   <input
                     type="text"
+                    list="romnrList"
                     value={formData.romnr}
                     onChange={(e) => setFormData({...formData, romnr: e.target.value})}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   />
+                  <datalist id="romnrList">
+                    {uniqueRomnr.map((romnr, idx) => (
+                      <option key={idx} value={romnr} />
+                    ))}
+                  </datalist>
                 </div>
 
                 <div>
@@ -559,11 +641,17 @@ function AirflowSchedule() {
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Romnavn *</label>
                   <input
                     type="text"
+                    list="romnavnList"
                     value={formData.romnavn}
                     onChange={(e) => setFormData({...formData, romnavn: e.target.value})}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                     required
                   />
+                  <datalist id="romnavnList">
+                    {uniqueRomnavn.map((romnavn, idx) => (
+                      <option key={idx} value={romnavn} />
+                    ))}
+                  </datalist>
                 </div>
 
                 <div>
@@ -577,7 +665,7 @@ function AirflowSchedule() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Prosessluft (m³/h)</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Prosessluft (C) (m³/h)</label>
                   <input
                     type="number"
                     step="0.1"
@@ -587,8 +675,16 @@ function AirflowSchedule() {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Kravspek (m³/h/m²)</label>
+                <div className="relative">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                    Kravspek luftmengde (m³/h/m²)
+                    <div className="group relative">
+                      <Info className="w-4 h-4 text-blue-500 cursor-help" />
+                      <div className="hidden group-hover:block absolute left-0 top-6 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-lg z-10">
+                        Hvis prosjektets kravspesifikasjon krever en minimumsluftmengde pr kvadrat skal denne benyttes her.
+                      </div>
+                    </div>
+                  </label>
                   <input
                     type="number"
                     step="0.1"
@@ -598,15 +694,35 @@ function AirflowSchedule() {
                   />
                 </div>
 
+                {/* TEK17 Calculated Display */}
+                <div className="md:col-span-2 p-4 bg-blue-50 rounded-lg">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-semibold text-gray-700">TEK17 Anbefalt luftmengde:</span>
+                    <span className="text-lg font-bold text-teal-600">{tek17Calculated.toFixed(1)} m³/h</span>
+                  </div>
+                  <p className="text-xs text-gray-600 mt-1">Basert på areal, personer og prosessluft</p>
+                </div>
+
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Valgt tilluft (m³/h) *</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Valgt tilluft (m³/h)</label>
                   <input
                     type="number"
                     step="0.1"
                     value={formData.valgtTilluft_m3h}
                     onChange={(e) => setFormData({...formData, valgtTilluft_m3h: e.target.value})}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
-                    required
+                    placeholder={tek17Calculated > 0 ? `Anbefalt: ${tek17Calculated.toFixed(1)}` : ''}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Valgt avtrekk (m³/h)</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={formData.valgtAvtrekk_m3h}
+                    onChange={(e) => setFormData({...formData, valgtAvtrekk_m3h: e.target.value})}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   />
                 </div>
 
@@ -614,31 +730,45 @@ function AirflowSchedule() {
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Systemnr</label>
                   <input
                     type="text"
+                    list="systemnrList"
                     value={formData.systemnr}
                     onChange={(e) => setFormData({...formData, systemnr: e.target.value})}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
                   />
+                  <datalist id="systemnrList">
+                    {uniqueSystemnr.map((systemnr, idx) => (
+                      <option key={idx} value={systemnr} />
+                    ))}
+                  </datalist>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">VAV maks (m³/h)</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    VAV maks (m³/h)
+                    {formData.systemType === 'CAV' && <span className="text-xs text-gray-500 ml-2">(deaktivert for CAV)</span>}
+                  </label>
                   <input
                     type="number"
                     step="0.1"
                     value={formData.vavMaks_m3h}
                     onChange={(e) => setFormData({...formData, vavMaks_m3h: e.target.value})}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
+                    disabled={formData.systemType === 'CAV'}
+                    className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent ${formData.systemType === 'CAV' ? 'bg-gray-100 text-gray-400' : ''}`}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">CAV konstant (m³/h)</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    CAV konstant (m³/h)
+                    {formData.systemType === 'VAV' && <span className="text-xs text-gray-500 ml-2">(deaktivert for VAV)</span>}
+                  </label>
                   <input
                     type="number"
                     step="0.1"
                     value={formData.cavKonstant_m3h}
                     onChange={(e) => setFormData({...formData, cavKonstant_m3h: e.target.value})}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent"
+                    disabled={formData.systemType === 'VAV'}
+                    className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-600 focus:border-transparent ${formData.systemType === 'VAV' ? 'bg-gray-100 text-gray-400' : ''}`}
                   />
                 </div>
 
