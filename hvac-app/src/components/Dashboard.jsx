@@ -14,6 +14,7 @@ function Dashboard() {
   const [memberSearchQuery, setMemberSearchQuery] = useState('');
   const [showStatusMenu, setShowStatusMenu] = useState(false);
   const [sanitarySubmenuOpen, setSanitarySubmenuOpen] = useState(false);
+  const [ventilationExpanded, setVentilationExpanded] = useState(false);
 
   // Load current logged in user
   useEffect(() => {
@@ -340,8 +341,8 @@ function Dashboard() {
             {navItems.map((item, index) => {
               const Icon = item.icon;
               
-              // Handle items with submenu
-              if (item.hasSubmenu) {
+              // Handle Sanitær submenu
+              if (item.hasSubmenu && item.label === 'Sanitær') {
                 return (
                   <div key={index}>
                     <button
@@ -381,6 +382,47 @@ function Dashboard() {
                             {subItem.label}
                           </Link>
                         ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              
+              // Handle Ventilasjon submenu
+              if (item.label === 'Ventilasjon') {
+                return (
+                  <div key={index}>
+                    <button
+                      onClick={() => setVentilationExpanded(!ventilationExpanded)}
+                      className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'justify-between'} px-4 py-3 rounded-lg transition-all duration-200 text-teal-200 hover:bg-white/10 hover:text-white group relative`}
+                      title={sidebarCollapsed ? item.label : ''}
+                    >
+                      <div className={`flex items-center ${sidebarCollapsed ? '' : 'gap-4'}`}>
+                        <Icon className="w-6 h-6" />
+                        {!sidebarCollapsed && <span className="font-medium">{item.label}</span>}
+                      </div>
+                      {!sidebarCollapsed && (
+                        <ChevronDown className={`w-5 h-5 transition-transform ${ventilationExpanded ? 'rotate-180' : ''}`} />
+                      )}
+                      
+                      {/* Tooltip for collapsed state */}
+                      {sidebarCollapsed && (
+                        <span className="absolute left-full ml-2 px-3 py-2 bg-teal-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                          {item.label}
+                        </span>
+                      )}
+                    </button>
+                    
+                    {/* Submenu */}
+                    {ventilationExpanded && !sidebarCollapsed && (
+                      <div className="ml-6 mt-2 space-y-1">
+                        <Link
+                          to="/ventilation/airflow-schedule"
+                          className="flex items-center gap-3 px-4 py-2 rounded-lg text-teal-200 hover:bg-white/10 hover:text-white transition-all duration-200"
+                        >
+                          <div className="w-2 h-2 rounded-full bg-teal-400"></div>
+                          <span className="text-sm font-medium">Luftmengdeskjema</span>
+                        </Link>
                       </div>
                     )}
                   </div>

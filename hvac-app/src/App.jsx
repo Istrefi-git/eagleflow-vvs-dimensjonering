@@ -13,6 +13,7 @@ import ProfileSettings from './components/ProfileSettings';
 import SanitaryDesign from './components/SanitaryDesign';
 import SanitaryWater from './components/SanitaryWater';
 import StormwaterDesign from './components/StormwaterDesign';
+import AirflowSchedule from './components/ventilation/AirflowSchedule';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/sanitary" element={<SanitaryDesign />} />
           <Route path="/sanitary/water" element={<SanitaryWater />} />
           <Route path="/sanitary/overvann" element={<StormwaterDesign />} />
+          <Route path="/ventilation/airflow-schedule" element={<AirflowSchedule />} />
         </Routes>
       </div>
     </Router>
