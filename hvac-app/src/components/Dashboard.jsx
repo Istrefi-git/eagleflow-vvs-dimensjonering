@@ -372,14 +372,15 @@ function Dashboard() {
                     
                     {/* Submenu items */}
                     {sanitarySubmenuOpen && !sidebarCollapsed && (
-                      <div className="mt-1 space-y-1 pl-4">
+                      <div className="ml-6 mt-2 space-y-1">
                         {item.submenuItems.map((subItem, subIndex) => (
                           <Link
                             key={subIndex}
                             to={subItem.path}
-                            className="block px-4 py-2.5 text-teal-200 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 text-sm"
+                            className="flex items-center gap-3 px-4 py-2 rounded-lg text-teal-200 hover:bg-white/10 hover:text-white transition-all duration-200"
                           >
-                            {subItem.label}
+                            <div className="w-2 h-2 rounded-full bg-teal-400"></div>
+                            <span className="text-sm font-medium">{subItem.label}</span>
                           </Link>
                         ))}
                       </div>
